@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ten small Mac apps</title>
-<meta name="description" content="Amp, Chordmap, Sweep, Meet, Ask, Watch, Permissions, Clip, Tidy and Stash for Mac. Free, open source, each does one thing and says exactly what it touches.">
+<title>Small apps for Mac and Windows</title>
+<meta name="description" content="Ten small Mac apps and Quiet for Windows. Free, open source, each does one thing and says exactly what it touches.">
 <style>
   :root { color-scheme: light dark; --fg:#1d1d1f; --muted:#6e6e73; --bg:#fff; --card:#f5f5f7; --line:#e5e5ea; }
   @media (prefers-color-scheme: dark) { :root { --fg:#f5f5f7; --muted:#a1a1a6; --bg:#141416; --card:#232326; --line:#3a3a3c; } }
@@ -14,7 +14,14 @@
   .app a.dl { display:inline-block; background:var(--fg); color:var(--bg); padding:8px 14px; border-radius:8px; text-decoration:none; font-weight:600; font-size:15px; margin-right:12px; }
   .app a.src { color:var(--muted); font-size:15px; }
   .foot { margin-top:40px; color:var(--muted); font-size:15px; border-top:1px solid var(--line); padding-top:18px; }
+  .tabs { display:inline-flex; background:var(--card); border-radius:10px; padding:4px; margin:0 0 28px; }
+  .tabs a { padding:8px 18px; border-radius:8px; text-decoration:none; color:var(--muted); font-weight:600; font-size:15px; }
+  .tabs a[aria-selected="true"] { background:var(--bg); color:var(--fg); box-shadow:0 1px 3px rgba(0,0,0,.12); }
+  .panel[hidden] { display:none; }
+  .soon { display:inline-block; color:var(--muted); font-size:15px; margin-right:12px; }
 </style></head><body><main>
+<nav class="tabs" role="tablist"><a href="#mac" role="tab" aria-selected="true" data-tab="mac">Mac</a><a href="#windows" role="tab" aria-selected="false" data-tab="windows">Windows</a></nav>
+<div class="panel" id="mac" role="tabpanel">
 <h1>Ten small Mac apps.</h1>
 <p class="lead">Each does one thing, says exactly what it touches, and never phones home. Free, MIT licensed, no accounts. Built by Keith Adler.</p>
 
@@ -79,4 +86,31 @@
 <a class="dl" href="https://github.com/keithadler/ampmac/releases/latest">Download</a><a class="src" href="https://github.com/keithadler/ampmac">Source</a></div></div>
 
 <p class="foot">All five are ad-hoc signed, so the first open is a right-click and Open. Each checks GitHub once a day for a new version and can be told not to. Nothing else leaves the Mac.</p>
+</div>
+<div class="panel" id="windows" role="tabpanel" hidden>
+<h1>One small Windows app, so far.</h1>
+<p class="lead">Same shape as the Mac ones: one thing, plain English about what it touches, never phones home. Free, MIT licensed, no accounts.</p>
+
+<div class="app"><img src="icons/quietwin.png" alt=""><div>
+<h2>Quiet for Windows</h2>
+<p>Every piece of bundled junk, advertising surface, AI hook and telemetry switch on your PC on one screen, in plain English, each with what it costs you to turn it off. Solitaire, Clipchamp and the Bing apps ticked for you; Copilot, Recall and Click to Do named; the Settings home page, the lock screen offers, Bing in the search box. One tick reaches every account on the PC.</p>
+<p class="promise">It never changes anything without a receipt that undoes it. It never connects to anything. A removed app is the one thing it cannot put back, and it says so.</p>
+<span class="soon">First release soon. The source goes public with it.</span></div></div>
+
+<p class="foot">Windows 10 and 11, ARM64 and x64. One exe, no installer, no runtime to install. It is signed by its author, so the first open is SmartScreen's More info, then Run anyway. It never checks for updates; nothing leaves the PC.</p>
+</div>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs a'), panels = { mac: document.getElementById('mac'), windows: document.getElementById('windows') };
+  function show(name) {
+    if (!panels[name]) name = 'mac';
+    for (var k in panels) panels[k].hidden = (k !== name);
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'); });
+    document.title = name === 'windows' ? 'Quiet for Windows and ten small Mac apps' : 'Ten small Mac apps, and one for Windows';
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', '#' + t.dataset.tab); show(t.dataset.tab); }); });
+  window.addEventListener('hashchange', function () { show(location.hash.replace('#', '')); });
+  show(location.hash.replace('#', ''));
+})();
+</script>
 </main></body></html>
