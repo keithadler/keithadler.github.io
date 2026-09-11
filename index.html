@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Small apps for Mac and Windows</title>
-<meta name="description" content="Eleven small Mac apps and three for Windows. Free, open source, each does one thing and says exactly what it touches.">
+<meta name="description" content="Eleven small Mac apps and four for Windows. Free, open source, each does one thing and says exactly what it touches.">
 <style>
   :root { color-scheme: light dark; --fg:#1d1d1f; --muted:#6e6e73; --bg:#fff; --card:#f5f5f7; --line:#e5e5ea; }
   @media (prefers-color-scheme: dark) { :root { --fg:#f5f5f7; --muted:#a1a1a6; --bg:#141416; --card:#232326; --line:#3a3a3c; } }
@@ -94,7 +94,7 @@
 <p class="foot">They are all ad-hoc signed, so the first open is a right-click and Open. Each checks GitHub once a day for a new version and can be told not to. Nothing else leaves the Mac.</p>
 </div>
 <div class="panel" id="windows" role="tabpanel" hidden>
-<h1>Three small Windows apps.</h1>
+<h1>Four small Windows apps.</h1>
 <p class="lead">Same shape as the Mac ones: one thing, plain English about what it touches, never phones home. Free, MIT licensed, no accounts.</p>
 
 <div class="app"><img src="icons/plainwin.png" alt=""><div>
@@ -102,6 +102,12 @@
 <p>A bare-bones editor for the Word, Excel and PowerPoint files other people send you. Change the words, the numbers and the formulas; sort, filter and de-duplicate rows; add, rename and reorder sheets and slides; colour, align and box in cells; ask any cell what it reads and what reads it; see the headers, footers and speaker notes nobody looks at, and every link with where it really goes; compare two versions and see what changed; find which files in a folder mention something; see what a file would carry with it before you send it. One exe, no ribbon, no account, no assistant.</p>
 <p class="promise">It never damages what it cannot show you. Charts, macros, pivot tables and headers are written back as the exact bytes it found. Open a file, save it without changing anything, and you get the same file back byte for byte, which is a claim its own tests check on every build.</p>
 <a class="dl" href="https://github.com/keithadler/plainwin/releases/latest">Download</a><a class="src" href="https://github.com/keithadler/plainwin">Source</a></div></div>
+
+<div class="app"><img src="icons/staywin.png" alt=""><div>
+<h2>Stay for Windows 10</h2>
+<p>Windows 10 stopped being supported in October 2025 and your PC will not tell you where that leaves it. This does: whether Windows here is still being patched and until when, whether the updates you are entitled to are actually arriving, what is still getting fixed anyway (Edge, Defender, Office, your browser), whether this PC can take Windows 11 and exactly which check fails. Then what is making it slow, measured from Windows&apos; own log rather than guessed, the advertising and telemetry still switched on, and the bundled apps nobody asked for.</p>
+<p class="promise">Every change is written to a receipt first, with the value it had before, and one button puts it back. It shows its working, and when two things about your PC disagree it says so instead of guessing. It cannot patch Windows, and says so.</p>
+<a class="dl" href="https://github.com/keithadler/staywin/releases/latest">Download</a><a class="src" href="https://github.com/keithadler/staywin">Source</a></div></div>
 
 <div class="app"><img src="icons/quietwin.png" alt=""><div>
 <h2>Quiet for Windows</h2>
@@ -124,7 +130,7 @@
     if (!panels[name]) name = 'mac';
     for (var k in panels) panels[k].hidden = (k !== name);
     tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'); });
-    document.title = name === 'windows' ? 'Three small Windows apps, and eleven for the Mac' : 'Eleven small Mac apps, and three for Windows';
+    document.title = name === 'windows' ? 'Four small Windows apps, and eleven for the Mac' : 'Eleven small Mac apps, and four for Windows';
   }
   tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', '#' + t.dataset.tab); show(t.dataset.tab); }); });
   window.addEventListener('hashchange', function () { show(location.hash.replace('#', '')); });
