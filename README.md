@@ -1,3 +1,3 @@
-# Five small Mac apps
+# Small apps for Mac and Windows
 
-https://keithadler.github.io — Ask, Permissions, Clip, Room and Stash for Mac. Free, each does one thing and says exactly what it touches.
+https://keithadler.github.io — Chordmap for Mac, and Plain, Stay, Quiet and Stash for Windows. Free, each does one thing and says exactly what it touches.
